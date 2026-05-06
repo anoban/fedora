@@ -22,7 +22,7 @@
 
 8. If the system had a `nouveau` driver prior to the installation of the `NVIDIA` driver, the installer will prompt you to rebuild `initramfs`.
 
-9. After exiting the installer, enroll the public key used to sign the driver's kernel module into the Machine Owner Key - `MOK` database. So that the kernel knows that the sgnature on the module is trusted. To do this run:
+9. After exiting the installer, enroll the public key used to sign the driver's kernel module into the Machine Owner Key - `MOK` database. So that the kernel knows that the sgnature on the module is trusted. [RPMFusion docs](https://rpmfusion.org/Howto/Secure%20Boot) To do this run:
 
     ```
     $ sudo mokutil --import /usr/share/nvidia/nvidia-modsign-crt-DC8577D7.der
