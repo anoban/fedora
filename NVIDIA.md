@@ -120,3 +120,16 @@ Enroll this `DKMS` public key into `MOK` for the rebuilt kernel modules to work,
 Logs of the automatic kernel module rebuild are usually stored in `/var/lib/dkms/nvidia/<driver-version>/<kernel-version>/<architecture>/log/`.
 
 After a kernel upgrade, with successful `NVIDIA` kernel module rebuild, the system may still be unable to load the kernel modules if the certificate used to sign that module wasn't trusted in the `MOK` database. If this is the case, `nvidia-smi` would output `NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running`. If this happens, just enroll the `DKMS` public key in `MOK`, and reboot the system.
+
+
+## ___Uninstall NVIDIA drivers installed from a `.run` file___
+-----------------------------------
+
+
+In certain instances, there may be issues rebuilding kernel modules for the existing NVIDIA driver, with the release of a newer Linux kernel version. This can happen due to the installed NVIDIA driver's kernel sources being incompatible or not up to date with the headers of the upgraded kernel headers. In that case, it's best to do a manual clean reinstall. First, uninstall the existing NVIDIA driver, this will require an NVIDIA installer `.run` file (this doesn't need to be the same version as the one already installed on the machine).
+
+```
+sudo NVIDIA-Linux-x86_64-580.173.02.run --uninstall
+```
+
+Will cleanup the existing driver installation. Then, do a manual install using the `.run` file, as described above.
